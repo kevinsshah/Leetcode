@@ -13,14 +13,16 @@
 # Follow up: Recursive solution is trivial, could you do it iteratively?
 
 
+
+
 # Definition for a binary tree node.
-# class TreeNode(object):
+# class TreeNode:
 #     def __init__(self, x):
 #         self.val = x
 #         self.left = None
 #         self.right = None
 
-class Solution(object):
+class Solution:
     def inorderTraversal(self, root):
         """
         :type root: TreeNode
@@ -39,16 +41,20 @@ class Solution(object):
 
         #         return result
 
+
+
+
+        curr = root
         stack = []
         result = []
-        curr = root
 
-        while curr is not None or stack != []:
-            while curr is not None:
+        while curr or stack:
+            if curr:
                 stack.append(curr)
                 curr = curr.left
-            curr = stack.pop()
-            result.append(curr.val)
-            curr = curr.right
+            else:
+                curr = stack.pop()
+                result.append(curr.val)
+                curr = curr.right
 
         return result
